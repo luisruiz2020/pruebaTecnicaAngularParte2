@@ -80,4 +80,9 @@ export class AppComponent {
     let urlObtenerUsuarios = this.url + 'users/' + id;
     return this.http.delete<string>(urlObtenerUsuarios);
   }
+
+  crearUsuario(usuario: usuarioI): Observable<usuarioI> {
+    let urlObtenerUsuarios = this.url + 'users/';
+    return this.http.post<usuarioI>(urlObtenerUsuarios, usuario);
+  }
 }
