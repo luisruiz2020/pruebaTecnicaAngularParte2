@@ -22,6 +22,28 @@ import { catchError, retry } from 'rxjs/operators';
 export class AppComponent {
   title = 'prueba';
   url: string = 'https://jsonplaceholder.typicode.com/';
+  newUser= {
+    name: '',
+      username: '',
+      email: '',
+      address: {
+        street: '',
+        suite: '',
+        city: '',
+        zipcode: '',
+        geo: {
+          lat: '',
+          lng: '',
+        },
+      },
+      phone: '',
+      website: '',
+      company: {
+        name: '',
+        catchPhrase: '',
+        bs: '',
+      },
+  }
   listaUsuarios = [
     {
       id: 1,
@@ -45,7 +67,7 @@ export class AppComponent {
         catchPhrase: 'Multi-layered client-server neural-net',
         bs: 'harness real-time e-markets',
       },
-    }
+    },
   ];
   usu = {
     id: 1,
@@ -102,14 +124,26 @@ export class AppComponent {
     return this.http.get<usuarioI>(urlObtenerUsuarios);
   }
 
+  eventActualizarUsuario(usuario: usuarioI){
+    this.actualizarUsuario(usuario.id, usuario);
+  }
+
   actualizarUsuario(id: number, usuario: usuarioI): Observable<usuarioI> {
     let urlObtenerUsuarios = this.url + 'users/' + id;
     return this.http.put<usuarioI>(urlObtenerUsuarios, usuario);
   }
 
+  eventEliminarUsuario(usuario: usuarioI){
+    this.eliminarUsuario(usuario.id);
+  }
+
   eliminarUsuario(id: number): Observable<string> {
     let urlObtenerUsuarios = this.url + 'users/' + id;
     return this.http.delete<string>(urlObtenerUsuarios);
+  }
+
+  eventCrearUsuario(){
+    this.crearUsuario(this.newUser as usuarioI);
   }
 
   crearUsuario(usuario: usuarioI): Observable<usuarioI> {
