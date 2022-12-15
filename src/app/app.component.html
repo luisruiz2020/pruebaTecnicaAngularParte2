@@ -73,7 +73,7 @@
   </div>
   <div class="row">
     <div class="col">
-      <button (click)="eventCrearUsuario()">Create</button>
+      <button (click)="eventCrearUsuario()"><fa-icon [icon]="['fas', 'bell']"></fa-icon> Create</button>
     </div>
   </div>
   <div class="card">
@@ -122,8 +122,8 @@
             <td>{{usuario.address.street}}, {{usuario.address.suite}}, {{usuario.address.city}}, {{usuario.address.zipcode}}, {{usuario.address.geo.lat}}, {{usuario.address.geo.lng}}</td>
             <td>{{usuario.company.name}}, {{usuario.company.catchPhrase}}, {{usuario.company.bs}}</td>
             <td>
-              <button (click)="eventActualizarUsuario(usuario)">Update</button>
-              <button (click)="eventEliminarUsuario(usuario)">Delete</button>
+              <button (click)="eventActualizarUsuario(usuario)"> <fa-icon [icon]="['fas', 'pen']"></fa-icon>  Update</button>
+              <button (click)="eventEliminarUsuario(usuario)"> <fa-icon [icon]="['fas', 'trash']"></fa-icon>  Delete</button>
             </td>
           </tr>
         </tbody>

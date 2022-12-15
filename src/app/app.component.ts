@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 
 import { usuarioI } from '../Modelos/usuario.Interface';
 
+import { fas  } from '@fortawesome/free-solid-svg-icons';
+
 import {
   HttpClient,
   HttpEvent,
@@ -13,6 +15,7 @@ import {
 } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
+import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
 
 @Component({
   selector: 'app-root',
@@ -93,7 +96,9 @@ export class AppComponent {
     },
   };
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, library: FaIconLibrary) {
+    library.addIconPacks(fas);
+  }
 
   ngOnInit() {
     this.actualizarUsuario(1, this.usu).subscribe((data) => {
