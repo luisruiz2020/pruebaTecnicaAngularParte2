@@ -3,8 +3,13 @@ import { Component } from '@angular/core';
 import { usuarioI } from '../Modelos/usuario.Interface';
 
 import {
-  HttpClient, HttpEvent, HttpEventType, HttpProgressEvent,
-  HttpRequest, HttpResponse, HttpErrorResponse
+  HttpClient,
+  HttpEvent,
+  HttpEventType,
+  HttpProgressEvent,
+  HttpRequest,
+  HttpResponse,
+  HttpErrorResponse,
 } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
@@ -17,6 +22,31 @@ import { catchError, retry } from 'rxjs/operators';
 export class AppComponent {
   title = 'prueba';
   url: string = 'https://jsonplaceholder.typicode.com/';
+  listaUsuarios = [
+    {
+      id: 1,
+      name: 'Leanne Graham 2',
+      username: 'Bret2222',
+      email: 'Sincere@april.biz',
+      address: {
+        street: 'Kulas Light',
+        suite: 'Apt. 556',
+        city: 'Gwenborough',
+        zipcode: '92998-3874',
+        geo: {
+          lat: '-37.3159',
+          lng: '81.1496',
+        },
+      },
+      phone: '1-770-736-8031 x56442',
+      website: 'hildegard.org',
+      company: {
+        name: 'Romaguera-Crona',
+        catchPhrase: 'Multi-layered client-server neural-net',
+        bs: 'harness real-time e-markets',
+      },
+    }
+  ];
   usu = {
     id: 1,
     name: 'Leanne Graham 2',
@@ -44,11 +74,12 @@ export class AppComponent {
   constructor(private http: HttpClient) {}
 
   ngOnInit() {
-    this.actualizarUsuario(1, this.usu).subscribe((data) =>{
+    this.actualizarUsuario(1, this.usu).subscribe((data) => {
       console.log(data);
     });
 
     this.obtenerListaUsuarios().subscribe((data) => {
+      this.listaUsuarios = data;
       console.log(data);
     });
 
@@ -56,9 +87,9 @@ export class AppComponent {
       console.log(data);
     });
 
-    this.eliminarUsuario(1).subscribe((data) =>{
-      console.log(data)
-    })
+    this.eliminarUsuario(1).subscribe((data) => {
+      console.log(data);
+    });
   }
 
   obtenerListaUsuarios(): Observable<usuarioI[]> {

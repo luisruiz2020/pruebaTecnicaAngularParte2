@@ -90,5 +90,35 @@
       </div>
     </div>
   </div>
+  <div class="card">
+    <div class="card-body">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Username</th>
+            <th scope="col">Email</th>
+            <th scope="col">Phone</th>
+            <th scope="col">Website</th>
+            <th scope="col">Address Information</th>
+            <th scope="col">Comnpany Information</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let usuario of listaUsuarios">
+            <th scope="row">{{usuario.id}}</th>
+            <td>{{usuario.name}}</td>
+            <td>{{usuario.username}}</td>
+            <td>{{usuario.email}}</td>
+            <td>{{usuario.phone}}</td>
+            <td>{{usuario.website}}</td>
+            
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 </form>
+
 <router-outlet></router-outlet>
